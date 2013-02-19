@@ -52,6 +52,7 @@ $(function () {
 });
 
 function handleGenToggle(resultsVisible) {
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 
     $('.team-results').animate({
         height: 'toggle'
@@ -65,8 +66,6 @@ function handleGenToggle(resultsVisible) {
         $('#gen-teams').html('Generate Teams!')
         $('#shuffle-btn').hide()
     }
-    
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 function genTeams() {
