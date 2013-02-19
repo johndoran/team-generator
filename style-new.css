@@ -21,7 +21,7 @@ h5, div, ol, ul{
 }
 
 a:link {color:white;}      /* unvisited link */
-a:visited {color:black;}  /* visited link */
+a:visited,.modal-footer a{color:black;}  /* visited link */
 a:hover {color:black;}  /* mouse over link */
 a:active {color:black;}  /* selected link */
 
