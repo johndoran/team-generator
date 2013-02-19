@@ -1,0 +1,234 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Team Maker</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+    <script>
+
+        var players = ["John Doran", "Patrick Allen", "Eamonn Moloney", "Gary Meredith", "James Glennon", "Maciej Baranowski", "Conor O'Kane", "Sebastian Glowacki", "Karol Domagala", "Nicola Zaghini", "Stephen Crowley", "Neil Gleeson", "Ignacio Delgado", "Macdara Butler", "Lukasz Mazur", "Wojciech Kozlowski", "Mark Kelly", "Conor Twomey", "Brendan Casey", "Brendan Fahy", "Denise Creed"];
+        
+        var basedon = { "animals": ["Tigers","Lions","Wolves","Jaguars","Bears","Cheetahs","Leopards","Panthers","Gorillas"],
+            "birds": ["Hawks","Eagles","Kites","Ospreys","Falcons","Buzzards","Owls"],
+            "cars": ["Ferrari","Mercedes","Lexus","Bugatti","Jaguar","Audi","Cadillac","Lamborghini","Bentley","Porsche","Volvo"],
+            "dinosaurs": ["Velociraptors","Triceratops","Stegosaurus","T-Rex","Brachiosaurus","Allosaurus","Apatosaurus"],
+            "elements": ["Oxygen","Hydrogen","Helium","Carbon","Neon","Copper","Zinc","Cobalt","Titanium","Sodium"],
+            "greekgods": ["Zeus","Athena","Hera","Hermes","Artemis","Apollo","Poseidon","Ares","Eros","Hercules","Venus"],
+            "numbers": ["Team 1","Team 2","Team 3","Team 4","Team 5","Team 6","Team 7","Team 8","Team 9","Team 10"],
+            "sports": ["Giants","Yankees","Mets","Rangers","Knicks","Jets","Rays"],
+            "warriors": ["Knights","Spartans","Ninjas","Vikings","Samurai","Legionaires","Barbarians"]
+        };
+
+        $(function () {
+            for (var i = 0; i < players.length; i++) {
+                $('#names-val').append(players[i] + "\n")
+            }
+
+            $("#numplayers-val").change(function () {
+                $('#numplayers').html('No per team: ' + $('#numplayers-val').val())
+                 if($(".team-results").is(":visible")){
+                 	genTeams()
+                 }
+
+            });
+            $('#names-val').val($('#names-val').val().trim())
+            $('.team-results').hide()
+            $('#shuffle-btn').hide()
+
+            $('#numplayers').html('No per team: ' + $('#numplayers-val').val())
+            $('#no-of-players').html($('#no-of-players').html() + ' ' + players.length)
+
+            $('#gen-teams').click(function () {
+            	var resultsVisible = $(".team-results").is(":visible");
+
+            	handleGenToggle(resultsVisible);
+                if(!resultsVisible){
+                	genTeams()
+                }
+            });
+
+            $('#team-types').change(function(){
+   				genTeams()
+            });
+
+            $('#shuffle-btn').click(function(){
+            	genTeams()
+            	$('#example').modal('show') 
+            });
+
+        });
+        
+        function handleGenToggle(resultsVisible){
+        	$('.team-results').animate({
+                 height:'toggle'          
+			 });
+
+    		if(!resultsVisible){
+         	  	$('#gen-teams').html('Reset')
+         	  	$('#shuffle-btn').show()
+
+         	}else{
+         		$(".team-results .team textarea").val('');
+        	  	$('#gen-teams').html('Generate Teams!')
+        	  	$('#shuffle-btn').hide()
+        	}                    
+        }
+
+        function genTeams() {
+        	shuffleArray(players)
+
+			$(".team-results .team textarea").remove()
+			$(".team-results .team div #team-div").remove()
+
+    		var teamNames = basedon[$('#team-types :selected').val()]
+    		var numPlayersPerTeam = $('#numplayers-val').val()
+   			var numTeams = Math.ceil(players.length/numPlayersPerTeam)
+   			var numPlayers = numPlayersPerTeam/players.count
+       		var playerIdx = 0;
+
+
+    		for(t=0; t<numTeams; t++){
+
+    			var playerRow = teamNames[t] + '\n'	
+    			
+    			for(playerTeamIdx=0; playerTeamIdx<numPlayersPerTeam; playerTeamIdx++){
+    				if(players[playerIdx]!=undefined){
+    					playerRow += players[playerIdx] + '\n'
+    					playerIdx++;
+    				}
+    			}
+
+    		   $(".team-results .team").append("<textarea id='team-results' rows='8' columns='80' name='team' style='margin-right:2em;'>" + playerRow + "</textarea>");
+			}
+
+			function shuffleArray(array) {
+			    for (var i = array.length - 1; i > 0; i--) {
+			        var j = Math.floor(Math.random() * (i + 1));
+			        var temp = array[i];
+			        array[i] = array[j];
+			        array[j] = temp;
+			    }
+			    return array;
+			}
+
+			
+        }
+
+    </script>
+    <style>
+        #content {
+            background: #D5F3BD;
+            margin: 0 auto;
+            padding: 0.5em 1em;
+            border: 0.5em solid white;
+            border-top: 0;
+            text-align: left;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        body {
+            font-family: arial, sans-serif;
+            font-size: 100%;
+            margin: 3em;
+            color: #fff;
+            height: 100%;
+            width: 93%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url(http://blackboardmktg.com/wp-content/uploads/2011/11/blackboard-backgrounds-wallpapers.jpeg);
+        }
+
+        .opt {
+            margin-right: 3em;
+        }
+    </style>
+</head>
+<body>
+
+<center>
+    <div id="content-fluid content">
+        <form id="team-form">
+            <h1>MTT Hackathon 2013 Team Maker</h1>
+            <hr/>
+            <table id="main" width="90%">
+                <tr>
+                    <td valign="top">
+                        <h5 id="no-of-players">Participants:</h5>
+
+                        <div class="opt">
+                            <textarea rows="8" id="names-val" autofocus="autofocus">
+                            </textarea>
+                        </div>
+                    </td>
+                    <td valign="top">
+                        <h5>Team Names</h5>
+
+                        <div class="opt">
+                            <select id="team-types" name="basedon">
+                                <option value="animals">Animals</option>
+                                <option value="birds">Birds of Prey</option>
+                                <option value="cars">Cars</option>
+                                <option value="dinosaurs">Dinosaurs</option>
+                                <option value="elements">Elements</option>
+                                <option value="greekgods">Greek Gods</option>
+                                <option value="numbers" selected="selected">Numbers</option>
+                                <option value="sports">Sports Teams</option>
+                                <option value="warriors">Warriors</option>
+                            </select>
+                        </div>
+                    </td>
+
+                    <td id="options" valign="top">
+                        <h5 id="numplayers">Num Players: </h5>
+
+                        <div class="opt">
+                            <input type="range" min="3" max="7" id="numplayers-val" name="teams" value="5"/>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td id="output" valign="top" align="center" colspan="3">
+                        <div class="team-results">
+                        	<h4>Here are your teams:</h4>
+                            <div class="team" style="padding-top:2em; text-align:center;">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="bottom" colspan="3" align="center">
+                        <div class="opt">                            
+      						<button class="btn btn-primary btn-large" style="margin-top:1em;" id="gen-teams" type="button">Generate Teams!</button>
+      						<button class="btn btn-large" id="shuffle-btn" style="margin-top:1em;" id="gen-teams" type="button">Shuffle!</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <div id="example" class="modal hide fade in" style="display: none; ">  
+			<div class="modal-header">  
+			<a class="close" data-dismiss="modal">X</a>  
+			<h3 style="color:black;">I Like!</h3>  
+			</div>  
+			<div class="modal-body">  
+			<h4>jjj</h4>  
+			<img src="https://d27fcql9yjk2c0.cloudfront.net/assets/4614129/view_large/borat-mustache1.jpg?1321611283" alt="some_text">
+			</div>  
+			<div class="modal-footer">  
+			<a href="#" class="btn" data-dismiss="modal">Close</a>  
+		</div>  
+
+
+    </div>
+
+</center>
+
+</body>
+
+</html>
