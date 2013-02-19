@@ -52,7 +52,7 @@ $(function () {
 });
 
 function handleGenToggle(resultsVisible) {
-    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+    //$("html, body").animate({ scrollTop: $(document).height() }, "slow");
 
     $('.team-results').animate({
         height: 'toggle'
