@@ -52,6 +52,7 @@ $(function () {
 });
 
 function handleGenToggle(resultsVisible) {
+
     $('.team-results').animate({
         height: 'toggle'
     });
@@ -59,12 +60,13 @@ function handleGenToggle(resultsVisible) {
     if (!resultsVisible) {
         $('#gen-teams').html('Reset')
         $('#shuffle-btn').show()
-
     } else {
         $(".team-results .team textarea").val('');
         $('#gen-teams').html('Generate Teams!')
         $('#shuffle-btn').hide()
     }
+    
+    $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
 function genTeams() {
