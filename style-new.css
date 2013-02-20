@@ -33,7 +33,7 @@ display: none;
 margin-right: 3em;
 }
 
-#mtt-btn {
+#shuffle-btn {
   background-color: #c9da2d !important;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c9da2d", endColorstr="#c9da2d");
@@ -49,8 +49,3 @@ margin-right: 3em;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
   -webkit-font-smoothing: antialiased;
 }
-
-.btn-inverse ,.btn-inverse:hover{ 
-	background-color: ##c9da2d !important
-	background-image:none;
-};
