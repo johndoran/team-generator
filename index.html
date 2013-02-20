@@ -16,8 +16,9 @@
   <body>
 
     <div class="container container-fluid">
-        <div id="title" style="padding-top:1em; text-align:center;">
-            <img src="http://www.mttnow.com/images/logo.png" alt="logoMtt" height="132" width="200"/>
+        <div id="title" style="padding-top:1em; margin-bottom:2em; text-align:center;">
+            <img style="margin-bottom: 1em;" src="http://www.mttnow.com/images/logo.png" alt="logoMtt"/>
+            <h3 style="display:inline-block; vertical-align:bottom; padding-left:5px;">Hackathon 2013</h3>
         </div>
 
 
@@ -25,7 +26,7 @@
               <ul class="nav nav-tabs">
                 <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
                 <li><a href="#rules" data-toggle="tab">Rules</a></li>
-                <li><a href="#teams" data-toggle="tab">Generate Teams</a></li>
+                <li><a href="#teams" data-toggle="tab">Teams Generator</a></li>
                 <li><a href="#selectTeams" data-toggle="tab">Selected Teams</a></li>
               </ul>
               <div class="tab-content" style="padding-bottom: 9px; solid #ddd;">
@@ -108,10 +109,10 @@
                             <tr>
                                 <td valign="bottom" colspan="3" align="center">
                                     <div class="opt">
-                                        <button class="btn btn-primary btn-large" style="margin-top:1em;" id="gen-teams"
+                                        <button class="btn btn-large" style="margin-top:1em;" id="gen-teams"
                                                 type="button">Generate Teams!
                                         </button>
-                                        <button class="btn btn-large  btn-success" id="shuffle-btn" style="margin-top:1em;" id="gen-teams"
+                                        <button class="btn btn-large btn-inverse" id="shuffle-btn" style="margin-left:5px; margin-top:1em;" id="gen-teams"
                                                 type="button">
                                             Shuffle!
                                         </button>
