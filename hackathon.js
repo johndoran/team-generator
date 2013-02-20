@@ -59,11 +59,11 @@ function handleGenToggle(resultsVisible) {
     });
 
     if (!resultsVisible) {
-        $('#gen-teams').html('Reset')
+        $('#gen-teams').html('Reset').removeId('mtt-btn')
         $('#shuffle-btn').show()
     } else {
         $(".team-results .team textarea").val('');
-        $('#gen-teams').html('Generate Teams!')
+        $('#gen-teams').html('Generate Teams!').addId('mtt-btn')
         $('#shuffle-btn').hide()
     }
 }

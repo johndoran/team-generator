@@ -32,3 +32,25 @@ display: none;
 .opt {
 margin-right: 3em;
 }
+
+#mtt-btn {
+  background-color: #c9da2d !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#c9da2d", endColorstr="#c9da2d");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c9da2d), to(#c9da2d));
+  background-image: -moz-linear-gradient(top, #c9da2d, #c9da2d);
+  background-image: -ms-linear-gradient(top, #c9da2d, #c9da2d);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c9da2d), color-stop(100%, #c9da2d));
+  background-image: -webkit-linear-gradient(top, #c9da2d, #c9da2d);
+  background-image: -o-linear-gradient(top, #c9da2d, #c9da2d);
+  background-image: linear-gradient(#c9da2d, #c9da2d);
+  border-color: #c9da2d #c9da2d hsl(201, 100%, 25%);
+  color: black!important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-inverse ,.btn-inverse:hover{ 
+	background-color: ##c9da2d !important
+	background-image:none;
+};
