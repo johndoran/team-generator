@@ -1,3 +1,5 @@
+Team generator code for a group activity
+========================================
 Some quick and dirty UI + js to help putting together some teams for a comp.<br/>
 TODO:
 <ol>
